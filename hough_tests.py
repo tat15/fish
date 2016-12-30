@@ -52,3 +52,5 @@ cv2.imwrite('./Hough/line_test/test.jpg', gray)
 #     if img is not None:
 #         cv2.imwrite('./Hough/edges/large_sample/' + str(n) + '.jpg', HoughPrac(img))#cv2.HoughCircles(img, cv2.HOUGH_GRADIENT, 1, 20))
 #         n+=1
+
+here are some changes that I want to make
