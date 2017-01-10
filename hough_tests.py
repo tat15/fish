@@ -22,16 +22,17 @@ def HoughCirc(i):
 def LineTest(i):
     im_array = i
 
-    # rho =
-    # theta =
-    # threshold =
+    rho = 1
+    theta = np.pi/180
+    threshold = 150
+    mll = 25
 
     thresh_low = 18
     thresh_high = 3*thresh_low
 
     gray = cv2.cvtColor(im_array, cv2.COLOR_BGR2GRAY)
     edges = cv2.Canny(gray, thresh_low, thresh_high)#, apertureSize=3)
-    return cv2.HoughLinesP(edges, 1, np.pi/180, 200, minLineLength = 25)
+    return cv2.HoughLinesP(edges, rho, theta, threshold, minLineLength = mll)
 
 def addLines(i, l = None):
     if l is None:
@@ -61,7 +62,11 @@ def addLines(i, l = None):
     # cv2.imwrite('./Hough/line_test/test.jpg', gray)
 
 def addCirc(i, circ):
-    i2 = i
+    if circ is None:
+        return i
+    else:
+        i2 = i
+
     for (x, y, r) in circles:
         cv2.circle(i2, (x, y), r, (255, 255, 255), 4)
         cv2.rectangle(i2, (x-5, y-5), (x+5, y+5), (255, 128, 255), -1)
